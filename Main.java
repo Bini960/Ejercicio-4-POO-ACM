@@ -10,8 +10,12 @@ import java.util.function.Consumer;
 public class Main {
 
     public static void main(String[] args) {
-        // Canal de salida de texto para toda la aplicación
+        // Canal de salida para el resto del programa
         Consumer<String> printer = System.out::println;
+
+        System.out.println("====================================");
+        System.out.println("       JUEGO DE BATALLA     ");
+        System.out.println("====================================");
 
         // Jugador con inventario inicial
         Jugador jugador = new Jugador("Héroe", 120, 18);
@@ -20,8 +24,34 @@ public class Main {
         jugador.agregarItem(new BombaFuego("Bomba de Fuego", 1, 12));
         jugador.agregarItem(new EscudoTemporal("Escudo Temporal", 1, 6, 2));
 
+        // Resumen de jugador (solo informativo)
+        System.out.println("Jugador creado: " + jugador.getNombre());
+        System.out.println("  Vida: " + jugador.getPuntosVida() + " | Ataque: " + jugador.getPoderAtaque());
+        System.out.println("  Inventario inicial:");
+        var itemsIniciales = jugador.listarItems();
+        if (itemsIniciales.isEmpty()) {
+            System.out.println("    (sin ítems)");
+        } else {
+            for (int i = 0; i < itemsIniciales.size(); i++) {
+                Item it = itemsIniciales.get(i);
+                System.out.println("    [" + (i + 1) + "] " + it.getNombre() + " x" + it.getCantidad());
+            }
+        }
+
         // Generar entre 1 y 3 enemigos, con posibilidad de jefes
         List<Enemigo> enemigos = generarEnemigos();
+
+        // Resumen de enemigos generados
+        System.out.println("\nEnemigos generados (" + enemigos.size() + "):");
+        for (int i = 0; i < enemigos.size(); i++) {
+            Enemigo e = enemigos.get(i);
+            System.out.println("  (" + (i + 1) + ") " + e.getNombre()
+                    + " | Vida: " + e.getPuntosVida()
+                    + " | Atk: " + e.getPoderAtaque());
+        }
+        System.out.println("------------------------------------");
+        System.out.println("Iniciando batalla... ¡suerte!");
+        System.out.println("------------------------------------");
 
         // Modelo (estado de la batalla) y Vista (I/O por consola)
         Batalla batalla = new Batalla(jugador, enemigos);
@@ -30,7 +60,12 @@ public class Main {
         // Controlador (orquesta turnos y decisiones)
         ControladorJuego ctrl = new ControladorJuego(vista, batalla);
         ctrl.iniciar();
+
+        // Mensaje de cierre
+        System.out.println("\nGracias por jugar. Fin del programa.");
     }
+
+    // -------------------- Helpers locales --------------------
 
     private static List<Enemigo> generarEnemigos() {
         Random rnd = new Random();
