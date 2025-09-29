@@ -5,21 +5,29 @@
  */
 
 import java.util.*;
+import java.util.function.Consumer;
 
 public class Main {
+
     public static void main(String[] args) {
-        // Jugador con ítems básicos
+        // Canal de salida de texto para toda la aplicación
+        Consumer<String> printer = System.out::println;
+
+        // Jugador con inventario inicial
         Jugador jugador = new Jugador("Héroe", 120, 18);
         jugador.agregarItem(new PocionCurativa("Poción Curativa", 2, 35));
         jugador.agregarItem(new PocionAtaque("Poción de Ataque", 1, 8, 2));
         jugador.agregarItem(new BombaFuego("Bomba de Fuego", 1, 12));
         jugador.agregarItem(new EscudoTemporal("Escudo Temporal", 1, 6, 2));
 
-        // 1..3 enemigos, con prob. de jefes
+        // Generar entre 1 y 3 enemigos, con posibilidad de jefes
         List<Enemigo> enemigos = generarEnemigos();
 
+        // Modelo (estado de la batalla) y Vista (I/O por consola)
         Batalla batalla = new Batalla(jugador, enemigos);
-        VistaJuego vista = new VistaJuego();
+        VistaJuego vista = new VistaJuego(printer);
+
+        // Controlador (orquesta turnos y decisiones)
         ControladorJuego ctrl = new ControladorJuego(vista, batalla);
         ctrl.iniciar();
     }
@@ -29,7 +37,7 @@ public class Main {
         int cantidad = 1 + rnd.nextInt(3); // 1..3
         List<Enemigo> lista = new ArrayList<>();
         for (int i = 0; i < cantidad; i++) {
-            int tipo = rnd.nextInt(3); // 0=Elfo,1=Gigante,2=Dragón
+            int tipo = rnd.nextInt(3);      // 0=Elfo, 1=Gigante, 2=Dragón
             boolean jefe = rnd.nextDouble() < 0.35;
             lista.add(crear(tipo, jefe, i + 1));
         }

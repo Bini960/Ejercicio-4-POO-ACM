@@ -7,47 +7,76 @@
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.Consumer;
 
 public class VistaJuego {
     private final Scanner sc = new Scanner(System.in);
+    private final Consumer<String> out;
 
-    public void mostrarEstado(Jugador jugador, List<Enemigo> enemigos, List<String> ultimasAcciones) {
-        System.out.println("\n=== ESTADO ===");
-        System.out.printf("Jugador: %s | Vida: %d | Atk: %d | DefTmp: %d | BuffAtk: %d turnos\n",
-                jugador.getNombre(), jugador.getPuntosVida(), jugador.getPoderAtaque(),
-                jugador.getDefensaTemporal(), jugador.getTurnosBuffAtaqueRestantes());
-        System.out.println("Ítems:");
-        List<Item> items = jugador.listarItems();
-        if (items.isEmpty()) System.out.println("  (sin ítems)");
-        else for (int i = 0; i < items.size(); i++)
-            System.out.printf("  [%d] %s (x%d)\n", i + 1, items.get(i).getNombre(), items.get(i).getCantidad());
-
-        System.out.println("Enemigos:");
-        for (int i = 0; i < enemigos.size(); i++) {
-            Enemigo e = enemigos.get(i);
-            System.out.printf("  (%d) %s | Vida: %d | Atk: %d\n", i + 1, e.getNombre(), e.getPuntosVida(), e.getPoderAtaque());
-        }
-        System.out.println("Últimas acciones:");
-        if (ultimasAcciones.isEmpty()) System.out.println("  (sin acciones)");
-        for (String a : ultimasAcciones) System.out.println("  - " + a);
+    // Recibe el canal de salida desde Main
+    public VistaJuego(Consumer<String> out) {
+        this.out = out;
     }
 
+    // Pequeño ayudante para enviar texto al canal de salida
+    private void print(String s) { out.accept(s); }
+
+    // Muestra vida/ataque del jugador, inventario, enemigos vivos y últimas 3 acciones
+    public void mostrarEstado(Jugador jugador, List<Enemigo> enemigos, List<String> ultimasAcciones) {
+        print("\n=== ESTADO ===");
+        print(String.format("Jugador: %s | Vida: %d | Atk: %d | DefTmp: %d | BuffAtk: %d turnos",
+                jugador.getNombre(), jugador.getPuntosVida(), jugador.getPoderAtaque(),
+                jugador.getDefensaTemporal(), jugador.getTurnosBuffAtaqueRestantes()));
+
+        print("Ítems:");
+        List<Item> items = jugador.listarItems();
+        if (items.isEmpty()) {
+            print("  (sin ítems)");
+        } else {
+            for (int i = 0; i < items.size(); i++) {
+                Item it = items.get(i);
+                print(String.format("  [%d] %s (x%d)", i + 1, it.getNombre(), it.getCantidad()));
+            }
+        }
+
+        print("Enemigos:");
+        for (int i = 0; i < enemigos.size(); i++) {
+            Enemigo e = enemigos.get(i);
+            print(String.format("  (%d) %s | Vida: %d | Atk: %d",
+                    i + 1, e.getNombre(), e.getPuntosVida(), e.getPoderAtaque()));
+        }
+
+        print("Últimas acciones:");
+        if (ultimasAcciones.isEmpty()) {
+            print("  (sin acciones)");
+        } else {
+            for (String a : ultimasAcciones) print("  - " + a);
+        }
+    }
+
+    // Menú principal de acciones del jugador
     public int leerOpcionAccion() {
-        System.out.println("\nAcciones: [1] Atacar  [2] Usar ítem  [3] Pasar  [4] Salir");
-        System.out.print("Elige: ");
+        print("\nAcciones: [1] Atacar  [2] Usar ítem  [3] Pasar  [4] Salir");
+        print("Elige: ");
         return leerEnteroRango(1, 4);
     }
 
+    // Selección de objetivo enemigo (1..N)
     public int leerObjetivo(int max) {
-        System.out.print("Elige objetivo (1-" + max + "): ");
+        print("Elige objetivo (1-" + max + "): ");
         return leerEnteroRango(1, max);
     }
 
+    // Selección de ítem (0=cancelar; 1..N para elegir)
     public int leerItem(int max) {
         if (max <= 0) return 0;
-        System.out.print("Elige ítem (1-" + max + ", 0 cancelar): ");
+        print("Elige ítem (1-" + max + ", 0 cancelar): ");
         return leerEnteroRango(0, max);
     }
+
+    // Mensajes informativos
+    public void mensaje(String txt) { print(txt); }
+
 
     private int leerEnteroRango(int min, int max) {
         while (true) {
@@ -56,9 +85,7 @@ public class VistaJuego {
                 int v = Integer.parseInt(s);
                 if (v >= min && v <= max) return v;
             } catch (NumberFormatException ignored) {}
-            System.out.print("Inválido. Intenta de nuevo: ");
+            print("Inválido. Intenta de nuevo: ");
         }
     }
-
-    public void mensaje(String txt) { System.out.println(txt); }
 }
