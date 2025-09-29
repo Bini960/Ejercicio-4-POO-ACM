@@ -1,3 +1,9 @@
+/*
+ * Nombre: Andrés Castro Morales
+ * Carné: 25039
+ * Descripción: Orquesta el flujo por turnos (patrón MVC). Pide decisiones a la Vista, aplica las acciones sobre el Modelo, ejecuta los turnos de los enemigos y avanza los efectos temporales del jugador. Termina cuando hay victoria, derrota o el jugador elige salir.
+ */
+
 import java.util.List;
 
 public class ControladorJuego {

@@ -1,3 +1,10 @@
+/*
+ * Nombre: Andrés Castro Morales
+ * Carné: 25039
+ * Descripción: Versión jefe del Dragón con aliento de nivel: tras usar su habilidad, 
+ * aplica una quemadura (daño residual) simulada como un chip de daño adicional. 
+ */
+
 public class JefeDragon extends Dragon {
     private final int alientoDragonNivel;
 

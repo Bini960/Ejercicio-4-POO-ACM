@@ -1,3 +1,10 @@
+/*
+ * Nombre: Andrés Castro Morales
+ * Carné: 25039
+ * Descripción: Encargada de la entrada/salida por consola. Muestra el estado (vida, ataque, defensas temporales, inventario, enemigos vivos, últimas 3 acciones) 
+ * y solicita opciones/objetivos/ítems al usuario.
+ */
+
 import java.util.List;
 import java.util.Scanner;
 

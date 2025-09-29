@@ -1,3 +1,9 @@
+/*
+ * Nombre: Andrés Castro Morales
+ * Carné: 25039
+ * Descripción: Ítem de buff que aumenta el ataque del jugador por N turnos. No requiere objetivo enemigo. Pensado para planificar picos de daño.
+ */
+
 public class PocionAtaque extends Item {
     private final int bonus;
     private final int turnos;

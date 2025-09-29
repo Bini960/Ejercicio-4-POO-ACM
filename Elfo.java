@@ -1,3 +1,9 @@
+/*
+ * Nombre: Andrés Castro Morales
+ * Carné: 25039
+ * Descripción: Enemigo evasivo: a veces mitiga a la mitad el daño recibido. Su habilidad especial realiza un ataque incrementado.
+ */
+
 public class Elfo extends Enemigo {
     private final double evasivo;
 

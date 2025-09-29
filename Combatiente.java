@@ -1,3 +1,8 @@
+/*
+ * Nombre: Andrés Castro Morales
+ * Carné: 25039
+ * Descripción: Superclase común a Jugador y Enemigo. Define identidad (nombre), estado de combate, acciones básicas y el contrato tomarTurno(Batalla), que cada subclase implementa.
+ */
 public abstract class Combatiente {
     protected final String nombre;
     protected int puntosVida;

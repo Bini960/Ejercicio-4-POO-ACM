@@ -1,3 +1,9 @@
+/*
+ * Nombre: Andrés Castro Morales
+ * Carné: 25039
+ * Descripción: Combatiente controlado por el usuario. Posee inventario de Item, puede usar ítems y gestiona efectos temporales. Su turno lo decide el Controlador; aquí solo se aplican efectos.
+ */
+
 import java.util.*;
 
 public class Jugador extends Combatiente {

@@ -1,3 +1,10 @@
+/*
+ * Nombre: Andrés Castro Morales
+ * Carné: 25039
+ * Descripción:Base para ítems usables por el jugador. Lleva nombre y cantidad de usos. Define usar(Jugador, Combatiente, Batalla) para aplicar el efecto y consumir() para descontar usos. 
+ * Por defecto no requiere objetivo enemigo (algunos ítems pueden redefinir esa necesidad).
+ */ 
+
 public abstract class Item {
     protected final String nombre;
     protected int cantidad;

@@ -1,3 +1,9 @@
+/*
+ * Nombre: Andrés Castro Morales
+ * Carné: 25039
+ * Descripción: Punto de entrada del programa. Crea al Jugador con su inventario inicial, genera entre 1 y 3 Enemigos, construye el modelo Batalla, la Vista y el Controlador y arranca el bucle de juego.
+ */
+
 import java.util.*;
 
 public class Main {

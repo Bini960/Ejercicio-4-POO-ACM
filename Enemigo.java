@@ -1,3 +1,9 @@
+/*
+ * Nombre: Andrés Castro Morales
+ * Carné: 25039
+ * Descripción: Base para enemigos concretos. Tiene una habilidadEspecial y decide su acción de turno con una regla simple. Declara el método abstracto usarHabilidadEspecial(...) que personalizan las subclases.
+ */
+
 import java.util.Random;
 
 public abstract class Enemigo extends Combatiente {

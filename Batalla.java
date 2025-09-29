@@ -1,3 +1,11 @@
+/*
+ * Nombre: Andrés Castro Morales
+ * Carné: 25039
+ * Descripción: Modelo del combate en turno. Mantiene referencias al Jugador, la lista de Enemigos 
+ * y un registro de las últimas 3 acciones. Provee utilidades para consultar enemigos vivos, registrar acciones 
+ * y determinar si la batalla terminó.
+ */
+
 import java.util.*;
 
 public class Batalla {

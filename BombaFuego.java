@@ -1,3 +1,9 @@
+/*
+ * Nombre: Andrés Castro Morales
+ * Carné: 25039
+ * Descripción: Ítem de daño en área: golpea a todos los enemigos vivos por un valor fijo. Útil para grupos múltiples y cerrar peleas.
+ */
+
 public class BombaFuego extends Item {
     private final int danioArea;
 

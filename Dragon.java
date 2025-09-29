@@ -1,3 +1,9 @@
+/*
+ * Nombre: Andrés Castro Morales
+ * Carné: 25039
+ * Descripción: Enemigo con daño elemental: su habilidad agrega fuego al ataque (golpe potenciado).
+ */
+
 public class Dragon extends Enemigo {
     private final int fuegoBase;
 

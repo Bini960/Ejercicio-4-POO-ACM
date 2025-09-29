@@ -1,3 +1,9 @@
+/*
+ * Nombre: Andrés Castro Morales
+ * Carné: 25039
+ * Descripción: Ítem defensivo: otorga defensa extra al jugador por N turnos, mitigando daño entrante durante ese periodo.
+ */
+
 public class EscudoTemporal extends Item {
     private final int defensaExtra;
     private final int turnos;

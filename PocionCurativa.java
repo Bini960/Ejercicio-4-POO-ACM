@@ -1,3 +1,9 @@
+/*
+ * Nombre: Andrés Castro Morales
+ * Carné: 25039
+ * Descripción: Ítem de soporte que cura puntos de vida al objetivo (normalmente el jugador). Consumible ya que, al agotarse, se remueve del inventario.
+ */
+
 public class PocionCurativa extends Item {
     private final int curacion;
 

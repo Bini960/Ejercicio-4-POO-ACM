@@ -1,3 +1,10 @@
+/*
+ * Nombre: Andrés Castro Morales
+ * Carné: 25039
+ * Descripción: Versión jefe del Elfo. Además de la habilidad del Elfo, encadena una habilidad extra que agrega un daño adicional ligero; 
+ * conserva la naturaleza evasiva, volviéndose más peligroso en turnos consecutivos.
+ */
+
 public class JefeElfo extends Elfo {
     private final String habilidadExtra;
 

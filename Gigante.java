@@ -1,3 +1,9 @@
+/*
+ * Nombre: Andrés Castro Morales
+ * Carné: 25039
+ * Descripción: Enemigo de fuerza bruta: su habilidad especial suma un valor fijo alto al ataque básico, causando picos de daño. 
+ */
+
 public class Gigante extends Enemigo {
     private final int fuerzaBruta;
 

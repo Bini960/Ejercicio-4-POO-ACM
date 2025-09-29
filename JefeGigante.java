@@ -1,3 +1,10 @@
+/*
+ * Nombre: Andrés Castro Morales
+ * Carné: 25039
+ * Descripción: Versión jefe del Gigante con resistencia extra: mitiga daño entrante (como una armadura simple). 
+ * Mantiene el golpe fuerte y resiste mejor el castigo del jugador.
+ */
+
 public class JefeGigante extends Gigante {
     private final int resistenciaExtra;
 
